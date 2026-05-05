@@ -27,9 +27,10 @@ export default function TrendsSection() {
   const [active, setActive] = useState(0);
 
   return (
-    <section style={{ padding: "3rem 0 3rem" }}>
+    <section style={{ padding: "5rem 0 6rem" }}>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 2rem" }}>
       {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 2rem", marginBottom: "1.5rem" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.5rem" }}>
         <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
           Today&apos;s trends
         </h2>
@@ -63,7 +64,7 @@ export default function TrendsSection() {
       </div>
 
       {/* Cards row */}
-      <div style={{ display: "flex", gap: "1rem", padding: "0 2rem", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none" }}>
+      <div style={{ display: "flex", gap: "1rem", overflowX: "auto", scrollSnapType: "x mandatory", scrollbarWidth: "none" }}>
         {trends.map((trend, i) => (
           <motion.div
             key={i}
@@ -129,6 +130,7 @@ export default function TrendsSection() {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   );

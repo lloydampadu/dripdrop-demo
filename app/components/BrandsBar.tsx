@@ -16,7 +16,7 @@ const allBrands = [...brands, ...brands];
 
 export default function BrandsBar() {
   return (
-    <div style={{ borderBottom: "1px solid #e5e7eb", overflow: "hidden", padding: "1.5rem 0" }}>
+    <div style={{ borderBottom: "1px solid #e5e7eb", overflow: "hidden", padding: "2rem 0", marginTop: "1rem" }}>
       <div className="marquee-track" style={{ display: "flex", alignItems: "center", whiteSpace: "nowrap" }}>
         {allBrands.map((brand, i) => (
           <span

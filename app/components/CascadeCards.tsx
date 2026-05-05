@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, type MotionStyle } from "framer-motion";
 
 const cards = [
   { number: "01", label: "Street Essentials", sub: "The foundation of every fit", image: "/card-jacket.jpg", position: "center" },
@@ -10,7 +10,7 @@ const cards = [
   { number: "03", label: "Denim Forever", sub: "Fresh off the rack", image: "/card-denim.jpg", position: "center top" },
 ];
 
-function Card({ card, style }: { card: typeof cards[0]; style: React.CSSProperties }) {
+function Card({ card, style }: { card: typeof cards[0]; style: MotionStyle }) {
   return (
     <motion.div style={{ position: "absolute", inset: 0, borderRadius: "24px", overflow: "hidden", ...style }}>
       <Image src={card.image} alt={card.label} fill style={{ objectFit: "cover", objectPosition: card.position }} />
@@ -56,9 +56,9 @@ export default function CascadeCards() {
         <div style={{ position: "sticky", top: "4rem", height: "85vh", maxWidth: "1280px", margin: "0 auto", padding: "0 2rem" }}>
           {/* Black backdrop so no white bleed */}
           <div style={{ position: "relative", width: "100%", height: "100%", overflow: "hidden", borderRadius: "24px", background: "#111" }}>
-            <Card card={cards[0]} style={{ y: card1Y } as React.CSSProperties} />
-            <Card card={cards[1]} style={{ x: card2X, y: card2Y } as React.CSSProperties} />
-            <Card card={cards[2]} style={{ x: card3X } as React.CSSProperties} />
+            <Card card={cards[0]} style={{ y: card1Y }} />
+            <Card card={cards[1]} style={{ x: card2X, y: card2Y }} />
+            <Card card={cards[2]} style={{ x: card3X }} />
           </div>
         </div>
       </div>

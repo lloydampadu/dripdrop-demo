@@ -13,12 +13,12 @@ export default function Navbar({ scrollProgress }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { count } = useCart();
 
-  const textColor = useTransform(scrollProgress, [0, 0], ["#1a1a1a", "#1a1a1a"]);
-  const bgColor = useTransform(scrollProgress, [0, 0], ["rgba(255,255,255,1)", "rgba(255,255,255,1)"]);
+  const textColor = useTransform(scrollProgress, [0.3, 0.5], ["#ffffff", "#1a1a1a"]);
+  const bgColor = useTransform(scrollProgress, [0.3, 0.5], ["rgba(0,0,0,0)", "rgba(255,255,255,1)"]);
 
   return (
     <>
-      <motion.nav style={{ backgroundColor: bgColor, position: "absolute", top: 0, left: 0, right: 0, zIndex: 101, borderBottom: "1px solid #f3f4f6" }}>
+      <motion.nav style={{ backgroundColor: bgColor, position: "absolute", top: 0, left: 0, right: 0, zIndex: 101 }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "1rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
           {/* Logo */}
@@ -73,13 +73,13 @@ export default function Navbar({ scrollProgress }: NavbarProps) {
               aria-label="Toggle menu"
             >
               <motion.span animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }} transition={{ duration: 0.2 }}
-                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#C9A84C" : "#1a1a1a", transformOrigin: "center" }}
+                style={{ display: "block", width: "22px", height: "2px", backgroundColor: menuOpen ? "#C9A84C" : textColor, transformOrigin: "center" }}
               />
               <motion.span animate={{ opacity: menuOpen ? 0 : 1 }} transition={{ duration: 0.15 }}
-                style={{ display: "block", width: "22px", height: "2px", background: "#1a1a1a" }}
+                style={{ display: "block", width: "22px", height: "2px", backgroundColor: textColor }}
               />
               <motion.span animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }} transition={{ duration: 0.2 }}
-                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#C9A84C" : "#1a1a1a", transformOrigin: "center" }}
+                style={{ display: "block", width: "22px", height: "2px", backgroundColor: menuOpen ? "#C9A84C" : textColor, transformOrigin: "center" }}
               />
             </button>
           </div>

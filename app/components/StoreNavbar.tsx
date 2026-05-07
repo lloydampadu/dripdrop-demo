@@ -71,11 +71,11 @@ export default function StoreNavbar() {
               aria-label="Toggle menu"
             >
               <motion.span animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }} transition={{ duration: 0.2 }}
-                style={{ display: "block", width: "22px", height: "2px", background: "#000", transformOrigin: "center" }} />
+                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#C9A84C" : "#1a1a1a", transformOrigin: "center" }} />
               <motion.span animate={{ opacity: menuOpen ? 0 : 1 }} transition={{ duration: 0.15 }}
-                style={{ display: "block", width: "22px", height: "2px", background: "#000" }} />
+                style={{ display: "block", width: "22px", height: "2px", background: "#1a1a1a" }} />
               <motion.span animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }} transition={{ duration: 0.2 }}
-                style={{ display: "block", width: "22px", height: "2px", background: "#000", transformOrigin: "center" }} />
+                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#C9A84C" : "#1a1a1a", transformOrigin: "center" }} />
             </button>
           </div>
         </div>

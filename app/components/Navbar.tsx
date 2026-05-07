@@ -73,14 +73,14 @@ export default function Navbar({ scrollProgress }: NavbarProps) {
               aria-label="Toggle menu"
             >
               <motion.span animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 7 : 0 }} transition={{ duration: 0.2 }}
-                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#000" : "currentColor", transformOrigin: "center" }}
+                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#C9A84C" : "currentColor", transformOrigin: "center" }}
                 className={menuOpen ? "" : "text-inherit"}
               />
               <motion.span animate={{ opacity: menuOpen ? 0 : 1 }} transition={{ duration: 0.15 }}
-                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#000" : "currentColor" }}
+                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#C9A84C" : "currentColor" }}
               />
               <motion.span animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -7 : 0 }} transition={{ duration: 0.2 }}
-                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#000" : "currentColor", transformOrigin: "center" }}
+                style={{ display: "block", width: "22px", height: "2px", background: menuOpen ? "#C9A84C" : "currentColor", transformOrigin: "center" }}
               />
             </button>
           </div>

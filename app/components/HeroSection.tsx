@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Link from "next/link";
 import { MotionValue, motion, useTransform } from "framer-motion";
 
 interface HeroProps {
@@ -15,14 +15,8 @@ export default function HeroSection({ scrollProgress }: HeroProps) {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
       <motion.div style={{ scale }} className="absolute inset-0">
-        <Image
-          src="/hero.jpg"
-          alt="Hero model"
-          fill
-          className="object-cover object-top"
-          priority
-        />
-        {/* gradient overlay — darker at bottom for text legibility */}
+        {/* placeholder — replace with hero image */}
+        <div style={{ position: "absolute", inset: 0, background: "#2a2a2a" }} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/70" />
       </motion.div>
 
@@ -48,13 +42,13 @@ export default function HeroSection({ scrollProgress }: HeroProps) {
           <span className="block text-[clamp(3rem,10vw,8rem)]">YOUR STYLE</span>
           <div className="flex items-center gap-6 flex-wrap">
             <span className="text-[clamp(3rem,10vw,8rem)]">WITH EASE</span>
-            <a
-              href="#"
+            <Link
+              href="/shop"
               className="flex items-center gap-2 bg-white text-black rounded-full text-sm font-semibold normal-case tracking-normal hover:bg-gray-100 transition-colors"
               style={{ padding: "1rem 2rem", fontSize: "1rem" }}
             >
               Shop now →
-            </a>
+            </Link>
           </div>
         </h1>
       </motion.div>

@@ -8,38 +8,46 @@ import BrandsBar from "./components/BrandsBar";
 import AboutSection from "./components/AboutSection";
 import TrendsSection from "./components/TrendsSection";
 import CascadeCards from "./components/CascadeCards";
+import FeaturedProducts from "./components/FeaturedProducts";
+import DropSection from "./components/DropSection";
+import SocialProof from "./components/SocialProof";
 import Footer from "./components/Footer";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef });
 
-  const panelY = useTransform(scrollYProgress, [0, 0.6], ["100%", "0%"]);
+  // Slower, smoother slide — starts at 60% scroll progress not 0
+  const panelY = useTransform(scrollYProgress, [0.2, 1], ["100%", "0%"]);
 
   return (
     <main className="bg-black">
-      {/* Hero scroll driver */}
-      <div ref={heroRef} style={{ height: "180vh", position: "relative" }}>
+      {/* Hero scroll driver — taller so the panel slide has more room */}
+      <div ref={heroRef} style={{ height: "220vh", position: "relative" }}>
         <div className="sticky top-0 h-screen overflow-hidden">
           <Navbar scrollProgress={scrollYProgress} />
           <HeroSection scrollProgress={scrollYProgress} />
 
-          {/* White panel slides up */}
+          {/* White panel slides up smoothly and covers full viewport height */}
           <motion.div
             style={{ y: panelY }}
-            className="absolute bottom-0 left-0 right-0 bg-white text-black rounded-t-[32px]"
-            // not overflow-hidden so sticky children inside work
+            className="absolute inset-0 top-auto bg-white text-black rounded-t-[32px]"
+            // height tall enough to visually connect to the content below
+            // overflow visible so AboutSection inside isn't clipped
           >
             <BrandsBar />
           </motion.div>
         </div>
       </div>
 
-      {/* Rest of page — normal document flow, white bg */}
-      <div style={{ background: "#fff", color: "#000" }}>
+      {/* Seamless continuation — no gap between sticky panel and this */}
+      <div style={{ background: "#fff", color: "#000", marginTop: "-2px" }}>
         <AboutSection />
+        <FeaturedProducts />
         <TrendsSection />
         <CascadeCards />
+        <DropSection />
+        <SocialProof />
         <Footer />
       </div>
     </main>

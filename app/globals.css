@@ -9,9 +9,18 @@
 body {
   background: #0a0a0a;
   color: #fff;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
+
+h1, h2, h3 {
+  font-family: var(--font-title), Arial, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-title { font-family: var(--font-title), Arial, sans-serif; }
+.font-sub   { font-family: var(--font-sub), Arial, sans-serif; }
+.font-body  { font-family: var(--font-body), Arial, sans-serif; }
 
 @keyframes marquee {
   0% { transform: translateX(0); }
@@ -19,7 +28,8 @@ body {
 }
 
 .marquee-track {
-  animation: marquee 30s linear infinite;
+  animation: marquee 24s linear infinite;
+  will-change: transform;
 }
 
 @keyframes fadeUp {

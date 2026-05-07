@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -35,12 +35,13 @@ export default function AboutSection() {
             borderRadius: "60% 40% 55% 45% / 45% 55% 45% 55%",
           }}
         >
-          <Image src="/about.jpg" alt="Model" fill style={{ objectFit: "cover", objectPosition: "center" }} />
+          {/* placeholder — replace with about image */}
+          <div style={{ position: "absolute", inset: 0, background: "#d1d5db" }} />
         </motion.div>
 
         {/* Right — text */}
         <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "1.5rem", justifyContent: "center" }}>
-          <h2 style={{ fontWeight: 900, fontSize: "clamp(1.8rem, 3.5vw, 3rem)", lineHeight: 1.15, letterSpacing: "-0.02em", margin: 0 }}>
+          <h2 className="font-title" style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)", lineHeight: 1.15, margin: 0 }}>
             {words.map((word, i) => (
               <motion.span
                 key={i}
@@ -60,13 +61,14 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
             viewport={{ once: true }}
+            className="font-body"
             style={{ color: "#6b7280", fontSize: "0.95rem", lineHeight: 1.7, maxWidth: "380px", margin: 0 }}
           >
             We&apos;re not just a store — we&apos;re a movement redefining streetwear. Connect with a community of creators, explore curated styles, and express yourself through fashion that speaks your language.
           </motion.p>
 
           <motion.a
-            href="#"
+            href="/shop"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
@@ -79,6 +81,7 @@ export default function AboutSection() {
               color: "#fff",
               borderRadius: "9999px",
               padding: "1rem 2rem",
+              fontFamily: "var(--font-sub)",
               fontSize: "1rem",
               fontWeight: 600,
               width: "fit-content",

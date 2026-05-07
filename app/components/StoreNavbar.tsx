@@ -95,14 +95,11 @@ export default function StoreNavbar() {
               display: "flex", flexDirection: "column",
             }}
           >
-            <div style={{ padding: "1rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #f3f4f6" }}>
+            <div style={{ padding: "1rem 2rem", borderBottom: "1px solid #f3f4f6" }}>
               <Link href="/" className="font-title" style={{ fontSize: "1.6rem", letterSpacing: "0.05em", color: "#000", textDecoration: "none" }}
                 onClick={() => setMenuOpen(false)}>
                 Chrisera
               </Link>
-              <button onClick={() => setMenuOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: "1.5rem", color: "#000" }}>
-                ✕
-              </button>
             </div>
 
             <div style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "0" }}>

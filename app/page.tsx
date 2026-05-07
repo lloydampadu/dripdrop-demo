@@ -18,12 +18,11 @@ export default function Home() {
   const { scrollYProgress } = useScroll({ target: heroRef });
 
   // Slower, smoother slide — starts at 60% scroll progress not 0
-  const panelY = useTransform(scrollYProgress, [0.2, 1], ["100%", "0%"]);
+  const panelY = useTransform(scrollYProgress, [0.3, 1], ["100%", "0%"]);
 
   return (
     <main className="bg-black">
-      {/* Hero scroll driver — taller so the panel slide has more room */}
-      <div ref={heroRef} style={{ height: "220vh", position: "relative" }}>
+      <div ref={heroRef} style={{ height: "130vh", position: "relative" }}>
         <div className="sticky top-0 h-screen overflow-hidden">
           <Navbar scrollProgress={scrollYProgress} />
           <HeroSection scrollProgress={scrollYProgress} />

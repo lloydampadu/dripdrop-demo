@@ -24,12 +24,10 @@ const initialForm: FormState = {
   address: "", city: "", state: "",
 };
 
-const nigeriaStates = [
-  "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
-  "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu",
-  "FCT", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi",
-  "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun",
-  "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara",
+const ghanaRegions = [
+  "Ahafo", "Ashanti", "Bono", "Bono East", "Central", "Eastern",
+  "Greater Accra", "North East", "Northern", "Oti", "Savannah",
+  "Upper East", "Upper West", "Volta", "Western", "Western North",
 ];
 
 function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
@@ -81,7 +79,7 @@ export default function CheckoutPage() {
       custom_fields: [
         { display_name: "Customer Name", variable_name: "customer_name", value: `${form.firstName} ${form.lastName}` },
         { display_name: "Phone", variable_name: "phone", value: form.phone },
-        { display_name: "Delivery Address", variable_name: "address", value: `${form.address}, ${form.city}, ${form.state}` },
+        { display_name: "Delivery Address", variable_name: "address", value: `${form.address}, ${form.city}, ${form.state}, Ghana` },
       ],
     },
   };
@@ -167,7 +165,7 @@ export default function CheckoutPage() {
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="08012345678"
+                    placeholder="0241234567"
                   />
                 </Field>
               </div>
@@ -182,7 +180,7 @@ export default function CheckoutPage() {
                     style={inputStyle}
                     value={form.address}
                     onChange={(e) => setForm({ ...form, address: e.target.value })}
-                    placeholder="12 Adeola Street"
+                    placeholder="12 Osu Road"
                   />
                 </Field>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
@@ -194,14 +192,14 @@ export default function CheckoutPage() {
                       placeholder="Lagos"
                     />
                   </Field>
-                  <Field label="State" error={errors.state}>
+                  <Field label="Region" error={errors.state}>
                     <select
                       style={{ ...inputStyle, background: "#fff" }}
                       value={form.state}
                       onChange={(e) => setForm({ ...form, state: e.target.value })}
                     >
                       <option value="">Select state</option>
-                      {nigeriaStates.map((s) => <option key={s}>{s}</option>)}
+                      {ghanaRegions.map((r) => <option key={r}>{r}</option>)}
                     </select>
                   </Field>
                 </div>

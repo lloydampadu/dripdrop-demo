@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { products } from "@/lib/products";
 import StoreNavbar from "@/app/components/StoreNavbar";
@@ -14,10 +15,16 @@ const sortOptions = ["Featured", "Price: Low to High", "Price: High to Low", "Ne
 
 function ShopContent() {
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get("category") || "All";
+  const router = useRouter();
 
-  const [activeCategory, setActiveCategory] = useState(initialCategory);
+  // Derive category directly from URL so nav links always work
+  const activeCategory = searchParams.get("category") || "All";
   const [sort, setSort] = useState("Featured");
+
+  function setActiveCategory(cat: string) {
+    const params = cat === "All" ? "/shop" : `/shop?category=${cat}`;
+    router.push(params);
+  }
 
   const filtered = useMemo(() => {
     let list = activeCategory === "All" ? products : products.filter((p) => p.category === activeCategory);

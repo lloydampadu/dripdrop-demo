@@ -15,8 +15,9 @@ function useCountdown(target: Date) {
       secs: Math.floor((diff % 60000) / 1000),
     };
   };
-  const [t, setT] = useState(calc);
+  const [t, setT] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
   useEffect(() => {
+    setT(calc());
     const id = setInterval(() => setT(calc()), 1000);
     return () => clearInterval(id);
   }, []);

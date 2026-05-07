@@ -101,15 +101,8 @@ export default function Navbar({ scrollProgress }: NavbarProps) {
               display: "flex", flexDirection: "column",
             }}
           >
-            <div style={{ padding: "1rem 2rem", borderBottom: "1px solid #f3f4f6" }}>
-              <Link href="/" className="font-title" style={{ fontSize: "1.6rem", letterSpacing: "0.05em", color: "#000", textDecoration: "none" }}
-                onClick={() => setMenuOpen(false)}>
-                Chrisera
-              </Link>
-            </div>
-
             {/* Links */}
-            <div style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "0" }}>
+            <div style={{ padding: "2rem", marginTop: "4rem", display: "flex", flexDirection: "column", gap: "0" }}>
               {[
                 { label: "Shop", href: "/shop" },
                 { label: "Tops", href: "/shop?category=Tops" },

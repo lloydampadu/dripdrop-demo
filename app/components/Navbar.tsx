@@ -18,7 +18,7 @@ export default function Navbar({ scrollProgress }: NavbarProps) {
 
   return (
     <>
-      <motion.nav style={{ backgroundColor: bgColor }} className="absolute top-0 left-0 right-0 z-50">
+      <motion.nav style={{ backgroundColor: bgColor, position: "absolute", top: 0, left: 0, right: 0, zIndex: 101 }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "1rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
           {/* Logo */}
@@ -97,7 +97,7 @@ export default function Navbar({ scrollProgress }: NavbarProps) {
             transition={{ duration: 0.25, ease: "easeOut" }}
             style={{
               position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
-              background: "#fff", zIndex: 49,
+              background: "#fff", zIndex: 100,
               display: "flex", flexDirection: "column",
             }}
           >

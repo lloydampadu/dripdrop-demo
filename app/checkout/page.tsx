@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { usePaystackPayment } from "react-paystack";
 import { useCart } from "@/lib/cart-context";
 import StoreNavbar from "@/app/components/StoreNavbar";
 
@@ -47,15 +46,43 @@ const inputStyle: React.CSSProperties = {
   transition: "border-color 0.2s", width: "100%", boxSizing: "border-box",
 };
 
+// Load Paystack inline script and open popup directly — no package needed
+function openPaystack(config: {
+  key: string; email: string; amount: number; ref: string;
+  onSuccess: () => void; onClose: () => void;
+}) {
+  const handler = (window as any).PaystackPop.setup({
+    key: config.key,
+    email: config.email,
+    amount: config.amount,
+    ref: config.ref,
+    currency: "GHS",
+    callback: () => config.onSuccess(),
+    onClose: () => config.onClose(),
+  });
+  handler.openIframe();
+}
+
 export default function CheckoutPage() {
   const { items, subtotal, clear } = useCart();
   const router = useRouter();
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [loading, setLoading] = useState(false);
+  const [scriptReady, setScriptReady] = useState(false);
 
   const shipping = subtotal > 500 ? 0 : 35;
   const total = subtotal + shipping;
+
+  // Load Paystack script client-side only
+  useEffect(() => {
+    if (document.getElementById("paystack-script")) { setScriptReady(true); return; }
+    const script = document.createElement("script");
+    script.id = "paystack-script";
+    script.src = "https://js.paystack.co/v1/inline.js";
+    script.onload = () => setScriptReady(true);
+    document.body.appendChild(script);
+  }, []);
 
   function validate() {
     const e: Partial<FormState> = {};
@@ -70,35 +97,17 @@ export default function CheckoutPage() {
     return Object.keys(e).length === 0;
   }
 
-  const paystackConfig = {
-    reference: `chrisera_${Date.now()}`,
-    email: form.email || "customer@chrisera.com",
-    amount: total * 100,
-    publicKey: PAYSTACK_PUBLIC_KEY,
-    metadata: {
-      custom_fields: [
-        { display_name: "Customer Name", variable_name: "customer_name", value: `${form.firstName} ${form.lastName}` },
-        { display_name: "Phone", variable_name: "phone", value: form.phone },
-        { display_name: "Delivery Address", variable_name: "address", value: `${form.address}, ${form.city}, ${form.state}, Ghana` },
-      ],
-    },
-  };
-
-  const initializePayment = usePaystackPayment(paystackConfig);
-
-  function onSuccess() {
-    clear();
-    router.push("/order-success");
-  }
-
-  function onClose() {
-    setLoading(false);
-  }
-
   function handlePay() {
     if (!validate()) return;
     setLoading(true);
-    initializePayment({ onSuccess, onClose });
+    openPaystack({
+      key: PAYSTACK_PUBLIC_KEY,
+      email: form.email,
+      amount: total * 100,
+      ref: `chrisera_${Date.now()}`,
+      onSuccess: () => { clear(); router.push("/order-success"); },
+      onClose: () => setLoading(false),
+    });
   }
 
   if (items.length === 0) {
@@ -133,40 +142,22 @@ export default function CheckoutPage() {
               <h2 className="font-title" style={{ fontSize: "1.3rem", margin: "0 0 1rem" }}>Contact Info</h2>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                 <Field label="First Name" error={errors.firstName}>
-                  <input
-                    style={inputStyle}
-                    value={form.firstName}
-                    onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-                    placeholder="John"
-                  />
+                  <input style={inputStyle} value={form.firstName}
+                    onChange={(e) => setForm({ ...form, firstName: e.target.value })} placeholder="Kofi" />
                 </Field>
                 <Field label="Last Name" error={errors.lastName}>
-                  <input
-                    style={inputStyle}
-                    value={form.lastName}
-                    onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-                    placeholder="Doe"
-                  />
+                  <input style={inputStyle} value={form.lastName}
+                    onChange={(e) => setForm({ ...form, lastName: e.target.value })} placeholder="Mensah" />
                 </Field>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginTop: "1rem" }}>
                 <Field label="Email" error={errors.email}>
-                  <input
-                    style={inputStyle}
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    placeholder="john@email.com"
-                  />
+                  <input style={inputStyle} type="email" value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="kofi@email.com" />
                 </Field>
                 <Field label="Phone" error={errors.phone}>
-                  <input
-                    style={inputStyle}
-                    type="tel"
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="0241234567"
-                  />
+                  <input style={inputStyle} type="tel" value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="0241234567" />
                 </Field>
               </div>
             </section>
@@ -176,29 +167,18 @@ export default function CheckoutPage() {
               <h2 className="font-title" style={{ fontSize: "1.3rem", margin: "0 0 1rem" }}>Delivery Address</h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                 <Field label="Street Address" error={errors.address}>
-                  <input
-                    style={inputStyle}
-                    value={form.address}
-                    onChange={(e) => setForm({ ...form, address: e.target.value })}
-                    placeholder="12 Osu Road"
-                  />
+                  <input style={inputStyle} value={form.address}
+                    onChange={(e) => setForm({ ...form, address: e.target.value })} placeholder="12 Osu Road" />
                 </Field>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                   <Field label="City" error={errors.city}>
-                    <input
-                      style={inputStyle}
-                      value={form.city}
-                      onChange={(e) => setForm({ ...form, city: e.target.value })}
-                      placeholder="Lagos"
-                    />
+                    <input style={inputStyle} value={form.city}
+                      onChange={(e) => setForm({ ...form, city: e.target.value })} placeholder="Accra" />
                   </Field>
                   <Field label="Region" error={errors.state}>
-                    <select
-                      style={{ ...inputStyle, background: "#fff" }}
-                      value={form.state}
-                      onChange={(e) => setForm({ ...form, state: e.target.value })}
-                    >
-                      <option value="">Select state</option>
+                    <select style={{ ...inputStyle, background: "#fff" }} value={form.state}
+                      onChange={(e) => setForm({ ...form, state: e.target.value })}>
+                      <option value="">Select region</option>
                       {ghanaRegions.map((r) => <option key={r}>{r}</option>)}
                     </select>
                   </Field>
@@ -212,20 +192,20 @@ export default function CheckoutPage() {
               <div>
                 <p className="font-sub" style={{ fontWeight: 700, fontSize: "0.8rem", margin: "0 0 0.2rem" }}>Secure Payment via Paystack</p>
                 <p className="font-body" style={{ fontSize: "0.78rem", color: "#6b7280", margin: 0 }}>
-                  Your payment is processed securely by Paystack. We accept cards, bank transfer, and USSD.
+                  Your payment is processed securely by Paystack. We accept cards, bank transfer, and mobile money.
                 </p>
               </div>
             </div>
 
             <button
               onClick={handlePay}
-              disabled={loading}
+              disabled={loading || !scriptReady}
               className="font-sub"
               style={{
-                background: loading ? "#6b7280" : "#000", color: "#fff",
+                background: loading || !scriptReady ? "#6b7280" : "#000", color: "#fff",
                 border: "none", borderRadius: "9999px",
                 padding: "1.1rem 2rem", fontSize: "1rem", fontWeight: 700,
-                cursor: loading ? "not-allowed" : "pointer", transition: "background 0.2s",
+                cursor: loading || !scriptReady ? "not-allowed" : "pointer", transition: "background 0.2s",
               }}
             >
               {loading ? "Opening Payment…" : `Pay GH₵${total.toLocaleString()}`}

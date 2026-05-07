@@ -14,7 +14,7 @@ export default function StoreNavbar() {
       <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "#fff", color: "#000", borderBottom: "1px solid #f3f4f6" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "1rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
 
-          <Link href="/" className="font-title" style={{ fontSize: "1.6rem", letterSpacing: "0.05em", color: "#000", textDecoration: "none" }}>
+          <Link href="/" className="font-title" style={{ fontSize: "1.6rem", letterSpacing: "0.05em", color: "#C9A84C", textDecoration: "none" }}>
             Chrisera
           </Link>
 
@@ -37,7 +37,7 @@ export default function StoreNavbar() {
             {count > 0 && (
               <span style={{
                 position: "absolute", top: "-6px", right: "-8px",
-                background: "#000", color: "#fff",
+                background: "#C9A84C", color: "#1a1a1a",
                 fontSize: "0.6rem", fontWeight: 700,
                 width: "16px", height: "16px", borderRadius: "50%",
                 display: "flex", alignItems: "center", justifyContent: "center",
@@ -57,7 +57,7 @@ export default function StoreNavbar() {
               {count > 0 && (
                 <span style={{
                   position: "absolute", top: "-5px", right: "-7px",
-                  background: "#000", color: "#fff",
+                  background: "#C9A84C", color: "#1a1a1a",
                   fontSize: "0.55rem", fontWeight: 700,
                   width: "14px", height: "14px", borderRadius: "50%",
                   display: "flex", alignItems: "center", justifyContent: "center",

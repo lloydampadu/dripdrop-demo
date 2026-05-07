@@ -117,7 +117,7 @@ export default function CheckoutPage() {
         <div style={{ maxWidth: "500px", margin: "0 auto", padding: "6rem 2rem", textAlign: "center" }}>
           <h1 className="font-title" style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>Nothing to Check Out</h1>
           <Link href="/shop" className="font-sub" style={{
-            background: "#000", color: "#fff", borderRadius: "9999px",
+            background: "#C9A84C", color: "#1a1a1a", borderRadius: "9999px",
             padding: "0.9rem 2rem", textDecoration: "none", fontSize: "0.9rem", fontWeight: 700,
           }}>Back to Shop</Link>
         </div>
@@ -202,7 +202,7 @@ export default function CheckoutPage() {
               disabled={loading || !scriptReady}
               className="font-sub"
               style={{
-                background: loading || !scriptReady ? "#6b7280" : "#000", color: "#fff",
+                background: loading || !scriptReady ? "#6b7280" : "#C9A84C", color: loading || !scriptReady ? "#fff" : "#1a1a1a",
                 border: "none", borderRadius: "9999px",
                 padding: "1.1rem 2rem", fontSize: "1rem", fontWeight: 700,
                 cursor: loading || !scriptReady ? "not-allowed" : "pointer", transition: "background 0.2s",

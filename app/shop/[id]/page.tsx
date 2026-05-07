@@ -156,9 +156,9 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                     style={{
                       padding: "0.5rem 1rem", borderRadius: "8px", fontSize: "0.8rem", fontWeight: 600,
                       border: "1.5px solid",
-                      borderColor: selectedSize === s ? "#000" : "#e5e7eb",
-                      background: selectedSize === s ? "#000" : "#fff",
-                      color: selectedSize === s ? "#fff" : "#374151",
+                      borderColor: selectedSize === s ? "#C9A84C" : "#e5e7eb",
+                      background: selectedSize === s ? "#C9A84C" : "#fff",
+                      color: selectedSize === s ? "#1a1a1a" : "#374151",
                       cursor: "pointer",
                     }}
                   >
@@ -174,7 +174,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 onClick={handleAddToCart}
                 className="font-sub"
                 style={{
-                  background: added ? "#16a34a" : "#000", color: "#fff",
+                  background: added ? "#16a34a" : "#C9A84C", color: added ? "#fff" : "#1a1a1a",
                   border: "none", borderRadius: "9999px",
                   padding: "1rem 2rem", fontSize: "0.9rem", fontWeight: 700,
                   cursor: "pointer", transition: "background 0.3s",

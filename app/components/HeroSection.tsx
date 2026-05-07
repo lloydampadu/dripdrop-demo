@@ -44,8 +44,8 @@ export default function HeroSection({ scrollProgress }: HeroProps) {
             <span className="text-[clamp(3rem,10vw,8rem)]">WITH EASE</span>
             <Link
               href="/shop"
-              className="flex items-center gap-2 bg-white text-black rounded-full text-sm font-semibold normal-case tracking-normal hover:bg-gray-100 transition-colors"
-              style={{ padding: "1rem 2rem", fontSize: "1rem" }}
+              className="flex items-center gap-2 rounded-full text-sm font-semibold normal-case tracking-normal transition-colors"
+              style={{ padding: "1rem 2rem", fontSize: "1rem", background: "#C9A84C", color: "#1a1a1a", fontWeight: 700 }}
             >
               Shop now →
             </Link>

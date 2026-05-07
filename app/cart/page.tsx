@@ -20,7 +20,7 @@ export default function CartPage() {
           <h1 className="font-title" style={{ fontSize: "3rem", margin: "0 0 1rem" }}>Your Bag is Empty</h1>
           <p className="font-body" style={{ color: "#6b7280", marginBottom: "2rem" }}>Looks like you haven&apos;t added anything yet.</p>
           <Link href="/shop" className="font-sub" style={{
-            background: "#000", color: "#fff", borderRadius: "9999px",
+            background: "#C9A84C", color: "#1a1a1a", borderRadius: "9999px",
             padding: "0.9rem 2.5rem", fontSize: "0.9rem", fontWeight: 700, textDecoration: "none",
           }}>
             Shop Now
@@ -134,7 +134,7 @@ export default function CartPage() {
 
             <Link href="/checkout" className="font-sub" style={{
               display: "block", textAlign: "center",
-              background: "#000", color: "#fff", borderRadius: "9999px",
+              background: "#C9A84C", color: "#1a1a1a", borderRadius: "9999px",
               padding: "1rem", fontSize: "0.9rem", fontWeight: 700,
               textDecoration: "none", marginTop: "0.5rem",
             }}>

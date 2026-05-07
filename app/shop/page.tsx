@@ -60,9 +60,9 @@ function ShopContent() {
                 style={{
                   padding: "0.5rem 1.1rem", borderRadius: "9999px", fontSize: "0.8rem", fontWeight: 600,
                   border: "1.5px solid",
-                  borderColor: activeCategory === cat ? "#000" : "#e5e7eb",
-                  background: activeCategory === cat ? "#000" : "#fff",
-                  color: activeCategory === cat ? "#fff" : "#374151",
+                  borderColor: activeCategory === cat ? "#C9A84C" : "#e5e7eb",
+                  background: activeCategory === cat ? "#C9A84C" : "#fff",
+                  color: activeCategory === cat ? "#1a1a1a" : "#374151",
                   cursor: "pointer", transition: "all 0.2s",
                 }}
               >

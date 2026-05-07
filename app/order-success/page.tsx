@@ -18,10 +18,10 @@ export default function OrderSuccessPage() {
           transition={{ type: "spring", stiffness: 200, damping: 14 }}
           style={{
             width: "80px", height: "80px", borderRadius: "50%",
-            background: "#000", display: "flex", alignItems: "center", justifyContent: "center",
+            background: "#C9A84C", display: "flex", alignItems: "center", justifyContent: "center",
           }}
         >
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </motion.div>
@@ -71,7 +71,7 @@ export default function OrderSuccessPage() {
           style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}
         >
           <Link href="/shop" className="font-sub" style={{
-            background: "#000", color: "#fff", borderRadius: "9999px",
+            background: "#C9A84C", color: "#1a1a1a", borderRadius: "9999px",
             padding: "0.9rem 2rem", fontSize: "0.9rem", fontWeight: 700, textDecoration: "none",
           }}>
             Continue Shopping

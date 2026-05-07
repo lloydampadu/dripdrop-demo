@@ -9,7 +9,7 @@ const items = [
 const allItems = [...items, ...items];
 
 const Dot = () => (
-  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#000", opacity: 0.25, display: "inline-block", flexShrink: 0 }} />
+  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#C9A84C", opacity: 0.7, display: "inline-block", flexShrink: 0 }} />
 );
 
 export default function BrandsBar() {

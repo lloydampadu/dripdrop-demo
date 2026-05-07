@@ -38,7 +38,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
           {/* Tag */}
           <span className="font-sub" style={{
             position: "absolute", top: "0.75rem", left: "0.75rem",
-            background: "#000", color: "#fff",
+            background: "#C9A84C", color: "#1a1a1a",
             fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em",
             textTransform: "uppercase", padding: "0.3rem 0.7rem", borderRadius: "9999px",
           }}>
@@ -53,7 +53,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
             className="font-sub"
             style={{
               position: "absolute", bottom: "0.75rem", left: "0.75rem", right: "0.75rem",
-              background: added ? "#16a34a" : "#000", color: "#fff",
+              background: added ? "#16a34a" : "#C9A84C", color: added ? "#fff" : "#1a1a1a",
               border: "none", borderRadius: "9999px",
               padding: "0.75rem", fontSize: "0.8rem", fontWeight: 600,
               cursor: "pointer", transition: "background 0.3s",
@@ -97,8 +97,8 @@ export default function FeaturedProducts() {
             </h2>
           </div>
           <Link href="/shop" className="font-sub" style={{
-            fontSize: "0.85rem", fontWeight: 600, color: "#000",
-            textDecoration: "none", borderBottom: "1.5px solid #000", paddingBottom: "2px",
+            fontSize: "0.85rem", fontWeight: 600, color: "#C9A84C",
+            textDecoration: "none", borderBottom: "1.5px solid #C9A84C", paddingBottom: "2px",
           }}>
             View all →
           </Link>

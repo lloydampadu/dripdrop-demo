@@ -40,7 +40,7 @@ export default function Footer() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Link href="/" className="font-title" style={{ fontSize: "2rem", letterSpacing: "0.05em", color: "#fff", textDecoration: "none", display: "block", marginBottom: "1rem" }}>
+              <Link href="/" className="font-title" style={{ fontSize: "2rem", letterSpacing: "0.05em", color: "#C9A84C", textDecoration: "none", display: "block", marginBottom: "1rem" }}>
                 Chrisera
               </Link>
             </motion.div>
@@ -65,7 +65,7 @@ export default function Footer() {
                 className="font-sub"
                 style={{
                   display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                  border: "1px solid rgba(255,255,255,0.2)", color: "#fff",
+                  border: "1px solid #C9A84C", color: "#C9A84C",
                   borderRadius: "9999px", padding: "0.65rem 1.4rem",
                   fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.05em",
                   textDecoration: "none",

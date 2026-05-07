@@ -44,7 +44,7 @@ function Stars({ count }: { count: number }) {
   return (
     <div style={{ display: "flex", gap: "2px" }}>
       {Array.from({ length: count }).map((_, i) => (
-        <span key={i} style={{ color: "#000", fontSize: "0.75rem" }}>★</span>
+        <span key={i} style={{ color: "#C9A84C", fontSize: "0.75rem" }}>★</span>
       ))}
     </div>
   );
@@ -81,7 +81,7 @@ function ReviewCard({ review, index }: { review: typeof reviews[0]; index: numbe
         </div>
         <span className="font-sub" style={{
           fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.08em",
-          textTransform: "uppercase", background: "#000", color: "#fff",
+          textTransform: "uppercase", background: "#C9A84C", color: "#1a1a1a",
           padding: "0.3rem 0.65rem", borderRadius: "9999px",
         }}>
           {review.tag}

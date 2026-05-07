@@ -51,7 +51,7 @@ export default function DropSection() {
           viewport={{ once: true }}
           style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}
         >
-          <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#ef4444", display: "inline-block", boxShadow: "0 0 8px #ef4444" }} />
+          <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#C9A84C", display: "inline-block", boxShadow: "0 0 8px #C9A84C" }} />
           <span className="font-sub" style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>
             Upcoming Drop
           </span>
@@ -110,7 +110,7 @@ export default function DropSection() {
               style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
             >
               <a href="/shop" className="font-sub" style={{
-                background: "#fff", color: "#000",
+                background: "#C9A84C", color: "#1a1a1a",
                 padding: "0.9rem 2rem", borderRadius: "9999px",
                 fontSize: "0.85rem", fontWeight: 700, textDecoration: "none",
                 letterSpacing: "0.05em",

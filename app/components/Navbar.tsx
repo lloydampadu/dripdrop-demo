@@ -13,7 +13,7 @@ export default function Navbar({ scrollProgress }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { count } = useCart();
 
-  const textColor = useTransform(scrollProgress, [0.3, 0.5], ["#ffffff", "#000000"]);
+  const textColor = useTransform(scrollProgress, [0.3, 0.5], ["#ffffff", "#1a1a1a"]);
   const bgColor = useTransform(scrollProgress, [0.3, 0.5], ["rgba(0,0,0,0)", "rgba(255,255,255,1)"]);
 
   return (
@@ -37,7 +37,7 @@ export default function Navbar({ scrollProgress }: NavbarProps) {
               {count > 0 && (
                 <span style={{
                   position: "absolute", top: "-6px", right: "-12px",
-                  background: "#fff", color: "#000",
+                  background: "#C9A84C", color: "#1a1a1a",
                   fontSize: "0.55rem", fontWeight: 700,
                   width: "14px", height: "14px", borderRadius: "50%",
                   display: "flex", alignItems: "center", justifyContent: "center",
@@ -58,7 +58,7 @@ export default function Navbar({ scrollProgress }: NavbarProps) {
               {count > 0 && (
                 <span style={{
                   position: "absolute", top: "-5px", right: "-7px",
-                  background: "#fff", color: "#000",
+                  background: "#C9A84C", color: "#1a1a1a",
                   fontSize: "0.55rem", fontWeight: 700,
                   width: "14px", height: "14px", borderRadius: "50%",
                   display: "flex", alignItems: "center", justifyContent: "center",
